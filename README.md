@@ -1,6 +1,6 @@
 # PythonWipe
 
-Idea:  Monitor a directory [group of directories], and once a certain time has passed, delete the files.
+##Idea:  Monitor a directory [group of directories], and once a certain time has passed, delete the files.
 
 Goal:
 Have a gui for choosing which directories to watch.
