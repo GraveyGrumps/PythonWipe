@@ -8,8 +8,8 @@ Have a certain time limit for each directoy placed.
 Work with all os's
 
 Phases:
-1. 
-  a. Be able to delete a directory/file
+..1. 
+  ...a. Be able to delete a directory/file
   b. Be able to store a list of directories to watch
   c. Be able to check the time of the directory/file
 2.
