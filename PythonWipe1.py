@@ -28,7 +28,6 @@ def main():
             except FileNotFoundError:
                 modlog([5,loc])
             loc = f.readline().rstrip()
-            print("loc =", loc)
     f.close()
     EditLocations(klist)
 
@@ -50,7 +49,7 @@ def modlog(data):
         f.write("\n")
         f.close()
     elif data[0] == 2:
-        f.write("DELETE: ")
+        f.write("DELFIL: ")
         f.write(data[1])
         f.write("      File Time: ")
         f.write(datetime.datetime.fromtimestamp(data[2]).strftime('%Y-%m-%d'))
@@ -67,7 +66,7 @@ def modlog(data):
         numdelete = 0
         f.close()
     elif data[0] == 4:
-        f.write("DELETE: ")
+        f.write("DELDIR: ")
         f.write(data[1])
         f.write(" Directory was empty\n")
         f.close()
@@ -87,6 +86,11 @@ def OpenDir(location,limit):
                 modlog([4,os.path.join(location,item)])
             except OSError:
                 OpenDir(os.path.join(location,item),limit)
+                try:
+                    os.rmdir(os.path.join(location,item))
+                    modlog([4,os.path.join(location,item)])
+                except OSError:
+                    pass
         else:
             #print(item + " Is a file")
             modtime = os.path.getmtime(os.path.join(location,item))
