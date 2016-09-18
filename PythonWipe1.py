@@ -116,10 +116,10 @@ def ParseTime(limit):
     dateHolder[0] = dateHolder[0] - l[0]
     dateHolder[1] = dateHolder[1] - l[1]
     dateHolder[2] = dateHolder[2] - l[2]
-    if dateHolder[1] <= 0:
+    while( dateHolder[1] <= 0):
         dateHolder[0] = dateHolder[0] - 1
         dateHolder[1] = dateHolder[1] + 12
-    if dateHolder[2] <= 0:
+    while( dateHolder[2] <= 0):
         dateHolder[2] = dateHolder[2] + IHateTheCalendar(dateHolder[1], dateHolder[0])
     print("The time limit is ", l[0] , " years:", l[1], " months:", l[2], " days which makes the deletion date:",dateHolder[0], ":",dateHolder[1],":",dateHolder[2])
     return datetime.datetime(dateHolder[0],dateHolder[1],dateHolder[2]).timestamp()
